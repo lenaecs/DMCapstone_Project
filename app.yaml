@@ -4,5 +4,5 @@ handlers:
 - url: /.*
   script: capstone.py
 libraries:
-  - name: Flask
+  - name: flask
     version: "1.0.2"
