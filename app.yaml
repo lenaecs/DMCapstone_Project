@@ -1,7 +1,8 @@
 runtime: python
-env: flex
-entrypoint: gunicorn -b :$PORT main:app
 threadsafe: false
 handlers:
 - url: /.*
   script: capstone.py
+libraries:
+  - name: Flask
+    version: "1.0.2"
