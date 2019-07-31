@@ -1,7 +1,7 @@
 runtime: python27
 threadsafe: false
 handlers:
-- url: /.*
+- url: /
   script: capstone.py
 libraries:
   - name: flask
