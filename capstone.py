@@ -12,14 +12,12 @@ def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 
-# @app.route('/')
-# def upload_csv_lenae():
-#     return render_template('upload.html')
-
-
-@app.route('/', methods=['POST'])
+@app.route('/upload')
 def upload_csv_lenae():
     return render_template('upload.html')
+
+
+@app.route('/upload', methods=['POST'])
 def upload_file():
     if request.method == 'POST':
         # check if the post request has the file part
@@ -34,7 +32,7 @@ def upload_file():
             filename = secure_filename(file.filename)
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
             flash('File successfully uploaded')
-            return redirect('/')
+            return redirect('/upload')
         else:
             flash('Allowed file types are txt, csv')
             return redirect(request.url)
