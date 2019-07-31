@@ -1,4 +1,4 @@
-runtime: python
+runtime: python27
 threadsafe: false
 handlers:
 - url: /.*
