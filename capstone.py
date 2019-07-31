@@ -13,7 +13,7 @@ def allowed_file(filename):
 
 
 @app.route('/')
-def upload_csv():
+def upload_csv_lenae():
     return render_template('upload.html')
 
 
