@@ -1,4 +1,3 @@
 runtime: python37
 handlers:
-- url: auto
   script: capstone.py
