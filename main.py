@@ -1,9 +1,9 @@
 import os
-# import magic
-# import urllib.request
 from app import app
 from flask import flash, request, redirect, render_template
 from werkzeug.utils import secure_filename
+import io
+import csv
 
 ALLOWED_EXTENSIONS = set(['csv', 'txt'])
 
@@ -30,8 +30,9 @@ def upload_file():
             flash('No file selected for uploading')
             return redirect(request.url)
         if file and allowed_file(file.filename):
-            file_open = open(file)
-            for line in file_open:
+            stream = io.StringIO(file.stream.read().decode("UTF8"), newline=None)
+            csv_input = csv.reader(stream)
+            for line in csv_input:
                 reviews.append(line)
             flash('File successfully uploaded')
             return redirect('/')
