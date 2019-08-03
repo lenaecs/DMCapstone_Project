@@ -16,6 +16,7 @@ def allowed_file(filename):
 def upload_csv_lenae():
     return render_template('upload.html')
 
+reviews = []
 
 @app.route('//', methods=['POST'])
 def upload_file():
@@ -29,8 +30,9 @@ def upload_file():
             flash('No file selected for uploading')
             return redirect(request.url)
         if file and allowed_file(file.filename):
-            filename = secure_filename(file.filename)
-            file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+            file_open = open(file)
+            for line in file_open:
+                reviews.append(line)
             flash('File successfully uploaded')
             return redirect('/')
         else:
